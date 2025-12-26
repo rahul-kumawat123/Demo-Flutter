@@ -18,3 +18,4 @@ class UserModel with _$UserModel {
       _$UserModelFromJson(json);
 }
 
+

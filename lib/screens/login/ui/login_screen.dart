@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../bloc/auth/auth_cubit.dart';
-import '../bloc/auth/auth_state.dart';
+import '../../../bloc/auth/auth_cubit.dart';
+import '../../../bloc/auth/auth_state.dart';
+import '../../../core/constants/app_spacing.dart';
+import '../../../l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,22 +30,24 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   String? _validateEmail(String? value) {
+    final l10n = AppLocalizations.of(context);
     if (value == null || value.isEmpty) {
-      return 'Email is required';
+      return l10n.emailRequired;
     }
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email';
+      return l10n.invalidEmail;
     }
     return null;
   }
 
   String? _validatePassword(String? value) {
+    final l10n = AppLocalizations.of(context);
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return l10n.passwordRequired;
     }
     if (value.length < 8) {
-      return 'Password must be at least 8 characters';
+      return l10n.passwordMinLength;
     }
     return null;
   }
@@ -51,14 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
       context.read<AuthCubit>().login(
-            _emailController.text.trim(),
-            _passwordController.text,
-          );
+        _emailController.text.trim(),
+        _passwordController.text,
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         state.when(
@@ -86,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SafeArea(
             child: Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.spacing32),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -94,8 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       // Logo
                       Container(
-                        width: 80,
-                        height: 80,
+                        width: AppSpacing.spacing80,
+                        height: AppSpacing.spacing80,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: const LinearGradient(
@@ -104,52 +110,52 @@ class _LoginScreenState extends State<LoginScreen> {
                           boxShadow: [
                             BoxShadow(
                               color: const Color(0xFFE94560).withOpacity(0.4),
-                              blurRadius: 20,
+                              blurRadius: AppSpacing.spacing20,
                             ),
                           ],
                         ),
                         child: const Icon(
                           Icons.rocket_launch_rounded,
-                          size: 40,
+                          size: AppSpacing.spacing40,
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 32),
+                      gapH32,
 
                       // Welcome text
-                      const Text(
-                        'Welcome Back',
-                        style: TextStyle(
+                      Text(
+                        l10n.welcomeBack,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      gapH8,
                       Text(
-                        'Sign in to continue',
+                        l10n.signInToContinue,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white.withOpacity(0.6),
                         ),
                       ),
-                      const SizedBox(height: 48),
+                      gapH50,
 
                       // Email field
                       CommonTextField(
                         controller: _emailController,
-                        hintText: 'Email',
+                        hintText: l10n.email,
                         prefixIcon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         validator: _validateEmail,
                       ),
-                      const SizedBox(height: 16),
+                      gapH16,
 
                       // Password field
                       CommonTextField(
                         controller: _passwordController,
-                        hintText: 'Password',
+                        hintText: l10n.password,
                         prefixIcon: Icons.lock_outline,
                         obscureText: _obscurePassword,
                         textInputAction: TextInputAction.done,
@@ -169,23 +175,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      gapH12,
 
                       // Forgot password
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
                           onPressed: () {
-                            'Currently under development'.showToast();
+                            l10n.currentlyUnderDevelopment.showToast();
                           },
                           child: Text(
-                            'Forgot Password?',
-                            style:
-                                TextStyle(color: Colors.white.withOpacity(0.6)),
+                            l10n.forgotPassword,
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.6),
+                            ),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 24),
+                      gapH24,
 
                       // Login button
                       BlocBuilder<AuthCubit, AuthState>(
@@ -197,29 +204,29 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           return SizedBox(
                             width: double.infinity,
-                            height: 52,
+                            height: AppSpacing.spacing52,
                             child: ElevatedButton(
                               onPressed: isLoading ? null : _handleLogin,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFFE94560),
                                 foregroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(AppSpacing.spacing12),
                                 ),
                                 elevation: 0,
                               ),
                               child: isLoading
                                   ? const SizedBox(
-                                      width: 24,
-                                      height: 24,
+                                      width: AppSpacing.spacing24,
+                                      height: AppSpacing.spacing24,
                                       child: CircularProgressIndicator(
                                         color: Colors.white,
                                         strokeWidth: 2,
                                       ),
                                     )
-                                  : const Text(
-                                      'Sign In',
-                                      style: TextStyle(
+                                  : Text(
+                                      l10n.signIn,
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -228,24 +235,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                       ),
-                      const SizedBox(height: 32),
+                      gapH32,
 
                       // Sign up link
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Don't have an account? ",
-                            style:
-                                TextStyle(color: Colors.white.withOpacity(0.6)),
+                            l10n.dontHaveAccount,
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.6),
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {
                               context.push('/signup');
                             },
-                            child: const Text(
-                              'Sign Up',
-                              style: TextStyle(
+                            child: Text(
+                              l10n.signUp,
+                              style: const TextStyle(
                                 color: Color(0xFFE94560),
                                 fontWeight: FontWeight.w600,
                               ),

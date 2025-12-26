@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../bloc/auth/auth_cubit.dart';
-import '../bloc/auth/auth_state.dart';
-import '../models/user_model.dart';
+import '../../../bloc/auth/auth_cubit.dart';
+import '../../../bloc/auth/auth_state.dart';
+import '../../../core/constants/app_spacing.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../models/user/user_model.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -27,7 +29,11 @@ class _SignupScreenState extends State<SignupScreen> {
   DateTime? _selectedDob;
   String _selectedGender = 'Male';
 
-  final List<String> _genderOptions = ['Male', 'Female', 'Other'];
+  List<String> _getGenderOptions(AppLocalizations l10n) => [
+    l10n.genderMale,
+    l10n.genderFemale,
+    l10n.genderOther,
+  ];
 
   @override
   void dispose() {
@@ -39,42 +45,46 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   String? _validateName(String? value) {
+    final l10n = AppLocalizations.of(context);
     if (value == null || value.isEmpty) {
-      return 'Name is required';
+      return l10n.nameRequired;
     }
     if (value.length < 2) {
-      return 'Name must be at least 2 characters';
+      return l10n.nameMinLength;
     }
     return null;
   }
 
   String? _validateEmail(String? value) {
+    final l10n = AppLocalizations.of(context);
     if (value == null || value.isEmpty) {
-      return 'Email is required';
+      return l10n.emailRequired;
     }
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email';
+      return l10n.invalidEmail;
     }
     return null;
   }
 
   String? _validatePassword(String? value) {
+    final l10n = AppLocalizations.of(context);
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return l10n.passwordRequired;
     }
     if (value.length < 8) {
-      return 'Password must be at least 8 characters';
+      return l10n.passwordMinLength;
     }
     return null;
   }
 
   String? _validateConfirmPassword(String? value) {
+    final l10n = AppLocalizations.of(context);
     if (value == null || value.isEmpty) {
-      return 'Please confirm your password';
+      return l10n.pleaseConfirmPassword;
     }
     if (value != _passwordController.text) {
-      return 'Passwords do not match';
+      return l10n.passwordsDoNotMatch;
     }
     return null;
   }
@@ -109,9 +119,10 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void _handleSignup() {
+    final l10n = AppLocalizations.of(context);
     if (_formKey.currentState!.validate()) {
       if (_selectedDob == null) {
-        'Please select your date of birth'.showToast();
+        l10n.pleaseSelectDob.showToast();
         return;
       }
 
@@ -129,6 +140,14 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final genderOptions = _getGenderOptions(l10n);
+    
+    // Update selected gender to use localized value
+    if (!genderOptions.contains(_selectedGender)) {
+      _selectedGender = genderOptions.first;
+    }
+    
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         state.when(
@@ -140,7 +159,7 @@ class _SignupScreenState extends State<SignupScreen> {
             message.showToast();
           },
           signupSuccess: () {
-            'Registration successful! Please login.'.showToast();
+            l10n.registrationSuccessful.showToast();
             context.go('/login');
           },
         );
@@ -156,7 +175,10 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           child: SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.spacing32,
+                vertical: AppSpacing.spacing24,
+              ),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -168,62 +190,62 @@ class _SignupScreenState extends State<SignupScreen> {
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                     ),
-                    const SizedBox(height: 24),
+                    gapH24,
 
-                    const Center(
+                    Center(
                       child: Text(
-                        'Create Account',
-                        style: TextStyle(
+                        l10n.createAccount,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    gapH8,
                     Center(
                       child: Text(
-                        'Fill in your details to get started',
+                        l10n.fillDetailsToGetStarted,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white.withOpacity(0.6),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    gapH40,
 
                     // Name field
                     CommonTextField(
                       controller: _nameController,
-                      hintText: 'Full Name',
+                      hintText: l10n.fullName,
                       prefixIcon: Icons.person_outline,
                       textInputAction: TextInputAction.next,
                       validator: _validateName,
                     ),
-                    const SizedBox(height: 16),
+                    gapH16,
 
                     // Email field
                     CommonTextField(
                       controller: _emailController,
-                      hintText: 'Email',
+                      hintText: l10n.email,
                       prefixIcon: Icons.email_outlined,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       validator: _validateEmail,
                     ),
-                    const SizedBox(height: 16),
+                    gapH16,
 
                     // Date of Birth
                     GestureDetector(
                       onTap: _selectDate,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16,
+                          horizontal: AppSpacing.spacing16,
+                          vertical: AppSpacing.spacing16,
                         ),
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
                           border: Border.all(
                             color: Colors.white.withOpacity(0.1),
                           ),
@@ -234,11 +256,11 @@ class _SignupScreenState extends State<SignupScreen> {
                               Icons.calendar_today_outlined,
                               color: Colors.white.withOpacity(0.6),
                             ),
-                            const SizedBox(width: 12),
+                            gapW12,
                             Text(
                               _selectedDob != null
                                   ? '${_selectedDob!.day}/${_selectedDob!.month}/${_selectedDob!.year}'
-                                  : 'Date of Birth',
+                                  : l10n.dateOfBirth,
                               style: TextStyle(
                                 color: _selectedDob != null
                                     ? Colors.white
@@ -250,14 +272,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    gapH16,
 
                     // Gender dropdown
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.spacing16),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(AppSpacing.spacing12),
                         border: Border.all(
                           color: Colors.white.withOpacity(0.1),
                         ),
@@ -268,7 +290,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             Icons.people_outline,
                             color: Colors.white.withOpacity(0.6),
                           ),
-                          const SizedBox(width: 12),
+                          gapW12,
                           Expanded(
                             child: DropdownButtonHideUnderline(
                               child: DropdownButton<String>(
@@ -278,7 +300,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
-                                items: _genderOptions.map((gender) {
+                                items: genderOptions.map((gender) {
                                   return DropdownMenuItem(
                                     value: gender,
                                     child: Text(gender),
@@ -297,12 +319,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    gapH16,
 
                     // Password field
                     CommonTextField(
                       controller: _passwordController,
-                      hintText: 'Password',
+                      hintText: l10n.password,
                       prefixIcon: Icons.lock_outline,
                       obscureText: _obscurePassword,
                       textInputAction: TextInputAction.next,
@@ -321,12 +343,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    gapH16,
 
                     // Confirm Password field
                     CommonTextField(
                       controller: _confirmPasswordController,
-                      hintText: 'Confirm Password',
+                      hintText: l10n.confirmPassword,
                       prefixIcon: Icons.lock_outline,
                       obscureText: _obscureConfirmPassword,
                       textInputAction: TextInputAction.done,
@@ -346,7 +368,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    gapH32,
 
                     // Sign up button
                     BlocBuilder<AuthCubit, AuthState>(
@@ -358,29 +380,29 @@ class _SignupScreenState extends State<SignupScreen> {
 
                         return SizedBox(
                           width: double.infinity,
-                          height: 52,
+                          height: AppSpacing.spacing52,
                           child: ElevatedButton(
                             onPressed: isLoading ? null : _handleSignup,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFE94560),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(AppSpacing.spacing12),
                               ),
                               elevation: 0,
                             ),
                             child: isLoading
                                 ? const SizedBox(
-                                    width: 24,
-                                    height: 24,
+                                    width: AppSpacing.spacing24,
+                                    height: AppSpacing.spacing24,
                                     child: CircularProgressIndicator(
                                       color: Colors.white,
                                       strokeWidth: 2,
                                     ),
                                   )
-                                : const Text(
-                                    'Create Account',
-                                    style: TextStyle(
+                                : Text(
+                                    l10n.createAccount,
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -389,23 +411,23 @@ class _SignupScreenState extends State<SignupScreen> {
                         );
                       },
                     ),
-                    const SizedBox(height: 24),
+                    gapH24,
 
                     // Login link
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already have an account? ',
+                          l10n.alreadyHaveAccount,
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.6),
                           ),
                         ),
                         GestureDetector(
                           onTap: () => context.go('/login'),
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(
+                          child: Text(
+                            l10n.signIn,
+                            style: const TextStyle(
                               color: Color(0xFFE94560),
                               fontWeight: FontWeight.w600,
                             ),
@@ -413,7 +435,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    gapH24,
                   ],
                 ),
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/local/auth_local_storage.dart';
-import '../../models/user_model.dart';
+import '../../models/user/user_model.dart';
 import 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -70,3 +70,4 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.initial());
   }
 }
+

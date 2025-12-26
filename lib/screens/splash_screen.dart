@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../core/constants/app_spacing.dart';
 import '../data/local/auth_local_storage.dart';
+import '../l10n/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -45,11 +47,11 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> _checkAuthAndNavigate() async {
     await Future.delayed(const Duration(seconds: 2));
-    
+
     if (!mounted) return;
 
     final isLoggedIn = await AuthLocalStorage.isLoggedIn();
-    
+
     if (!mounted) return;
 
     if (isLoggedIn) {
@@ -67,6 +69,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -90,8 +94,8 @@ class _SplashScreenState extends State<SplashScreen>
                   Transform.scale(
                     scale: _scaleAnimation.value,
                     child: Container(
-                      width: 100,
-                      height: 100,
+                      width: AppSpacing.spacing100,
+                      height: AppSpacing.spacing100,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: const LinearGradient(
@@ -103,24 +107,24 @@ class _SplashScreenState extends State<SplashScreen>
                         boxShadow: [
                           BoxShadow(
                             color: const Color(0xFFE94560).withOpacity(0.4),
-                            blurRadius: 20,
+                            blurRadius: AppSpacing.spacing20,
                           ),
                         ],
                       ),
                       child: const Icon(
                         Icons.rocket_launch_rounded,
-                        size: 50,
+                        size: AppSpacing.spacing50,
                         color: Colors.white,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  gapH24,
                   // App name
                   Opacity(
                     opacity: _fadeAnimation.value,
-                    child: const Text(
-                      'Demo App',
-                      style: TextStyle(
+                    child: Text(
+                      l10n.appName,
+                      style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

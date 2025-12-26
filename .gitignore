@@ -43,3 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# API Configuration (contains sensitive keys)
+# Copy api_constants.sample.dart to api_constants.dart and add your keys
+lib/core/network/api_constants.dart

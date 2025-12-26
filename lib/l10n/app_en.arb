@@ -1,0 +1,234 @@
+{
+  "@@locale": "en",
+  
+  "appName": "Demo App",
+  "@appName": {
+    "description": "The name of the application"
+  },
+
+  "welcomeBack": "Welcome Back",
+  "@welcomeBack": {
+    "description": "Welcome message on login screen"
+  },
+
+  "signInToContinue": "Sign in to continue",
+  "@signInToContinue": {
+    "description": "Subtitle on login screen"
+  },
+
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": {
+    "description": "Forgot password button text"
+  },
+
+  "signIn": "Sign In",
+  "@signIn": {
+    "description": "Sign in button text"
+  },
+
+  "dontHaveAccount": "Don't have an account? ",
+  "@dontHaveAccount": {
+    "description": "Text before sign up link"
+  },
+
+  "signUp": "Sign Up",
+  "@signUp": {
+    "description": "Sign up link text"
+  },
+
+  "createAccount": "Create Account",
+  "@createAccount": {
+    "description": "Create account title on signup screen"
+  },
+
+  "fillDetailsToGetStarted": "Fill in your details to get started",
+  "@fillDetailsToGetStarted": {
+    "description": "Subtitle on signup screen"
+  },
+
+  "fullName": "Full Name",
+  "@fullName": {
+    "description": "Full name field label"
+  },
+
+  "dateOfBirth": "Date of Birth",
+  "@dateOfBirth": {
+    "description": "Date of birth field label"
+  },
+
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {
+    "description": "Confirm password field label"
+  },
+
+  "alreadyHaveAccount": "Already have an account? ",
+  "@alreadyHaveAccount": {
+    "description": "Text before sign in link"
+  },
+
+  "home": "Home",
+  "@home": {
+    "description": "Home tab label"
+  },
+
+  "favourites": "Favourites",
+  "@favourites": {
+    "description": "Favourites tab label"
+  },
+
+  "account": "Account",
+  "@account": {
+    "description": "Account tab label"
+  },
+
+  "movies": "Movies",
+  "@movies": {
+    "description": "Movies header title"
+  },
+
+  "trendingThisWeek": "Trending This Week",
+  "@trendingThisWeek": {
+    "description": "Trending section header"
+  },
+
+  "retry": "Retry",
+  "@retry": {
+    "description": "Retry button text"
+  },
+
+  "noFavouritesYet": "No favourites yet",
+  "@noFavouritesYet": {
+    "description": "Empty favourites title"
+  },
+
+  "addMoviesToFavourites": "Add movies to your favourites\nby tapping the heart icon",
+  "@addMoviesToFavourites": {
+    "description": "Empty favourites subtitle"
+  },
+
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile section title"
+  },
+
+  "viewAndEditProfile": "View and edit your profile",
+  "@viewAndEditProfile": {
+    "description": "Profile section subtitle"
+  },
+
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout button text"
+  },
+
+  "logoutConfirmation": "Are you sure you want to logout?",
+  "@logoutConfirmation": {
+    "description": "Logout confirmation message"
+  },
+
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+
+  "emailRequired": "Email is required",
+  "@emailRequired": {
+    "description": "Validation message for empty email"
+  },
+
+  "invalidEmail": "Please enter a valid email",
+  "@invalidEmail": {
+    "description": "Validation message for invalid email format"
+  },
+
+  "passwordRequired": "Password is required",
+  "@passwordRequired": {
+    "description": "Validation message for empty password"
+  },
+
+  "passwordMinLength": "Password must be at least 8 characters",
+  "@passwordMinLength": {
+    "description": "Validation message for short password"
+  },
+
+  "nameRequired": "Name is required",
+  "@nameRequired": {
+    "description": "Validation message for empty name"
+  },
+
+  "nameMinLength": "Name must be at least 2 characters",
+  "@nameMinLength": {
+    "description": "Validation message for short name"
+  },
+
+  "pleaseConfirmPassword": "Please confirm your password",
+  "@pleaseConfirmPassword": {
+    "description": "Validation message for empty confirm password"
+  },
+
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {
+    "description": "Validation message for mismatched passwords"
+  },
+
+  "pleaseSelectDob": "Please select your date of birth",
+  "@pleaseSelectDob": {
+    "description": "Validation message for missing date of birth"
+  },
+
+  "registrationSuccessful": "Registration successful! Please login.",
+  "@registrationSuccessful": {
+    "description": "Success message after signup"
+  },
+
+  "addedToFavourites": "Added to favourites",
+  "@addedToFavourites": {
+    "description": "Toast message when movie is added to favourites"
+  },
+
+  "removedFromFavourites": "Removed from favourites",
+  "@removedFromFavourites": {
+    "description": "Toast message when movie is removed from favourites"
+  },
+
+  "searchComingSoon": "Search coming soon",
+  "@searchComingSoon": {
+    "description": "Placeholder message for search feature"
+  },
+
+  "movieDetailsComingSoon": "Movie details coming soon",
+  "@movieDetailsComingSoon": {
+    "description": "Placeholder message for movie details"
+  },
+
+  "currentlyUnderDevelopment": "Currently under development",
+  "@currentlyUnderDevelopment": {
+    "description": "Generic development placeholder message"
+  },
+
+  "genderMale": "Male",
+  "@genderMale": {
+    "description": "Male gender option"
+  },
+
+  "genderFemale": "Female",
+  "@genderFemale": {
+    "description": "Female gender option"
+  },
+
+  "genderOther": "Other",
+  "@genderOther": {
+    "description": "Other gender option"
+  }
+}
+

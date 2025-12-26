@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/app_spacing.dart';
+
 class CommonTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String hintText;
@@ -53,23 +55,23 @@ class CommonTextField extends StatelessWidget {
         filled: true,
         fillColor: Colors.white.withOpacity(0.1),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
           borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
           borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
           borderSide: const BorderSide(color: Color(0xFFE94560)),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
           borderSide: const BorderSide(color: Colors.redAccent),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppSpacing.spacing12),
           borderSide: const BorderSide(color: Colors.redAccent),
         ),
         errorStyle: const TextStyle(color: Colors.redAccent),
@@ -77,4 +79,3 @@ class CommonTextField extends StatelessWidget {
     );
   }
 }
-

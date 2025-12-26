@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../models/user_model.dart';
+import '../../models/user/user_model.dart';
 
 part 'auth_state.freezed.dart';
 
@@ -13,4 +13,3 @@ class AuthState with _$AuthState {
   const factory AuthState.error(String message) = AuthError;
   const factory AuthState.signupSuccess() = AuthSignupSuccess;
 }
-

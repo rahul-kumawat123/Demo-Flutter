@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../models/user_model.dart';
+import '../../models/user/user_model.dart';
 
 class AuthLocalStorage {
   static const String _usersKey = 'registered_users';
