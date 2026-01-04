@@ -369,6 +369,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Other'**
   String get genderOther;
+
+  /// Ratings label on detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Ratings'**
+  String get ratings;
+
+  /// Popularity label on detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Popularity'**
+  String get popularity;
+
+  /// Release date label on detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Release'**
+  String get releaseDate;
+
+  /// Genres section header on detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Genres'**
+  String get genres;
+
+  /// Storyline section header on detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Story line'**
+  String get storyline;
+
+  /// Actors section header on detail screen
+  ///
+  /// In en, this message translates to:
+  /// **'Actors'**
+  String get actors;
+
+  /// Show more text button
+  ///
+  /// In en, this message translates to:
+  /// **'more'**
+  String get more;
+
+  /// Show less text button
+  ///
+  /// In en, this message translates to:
+  /// **'less'**
+  String get less;
+
+  /// Favorite movies screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite movies'**
+  String get favouriteMovies;
 }
 
 class _AppLocalizationsDelegate

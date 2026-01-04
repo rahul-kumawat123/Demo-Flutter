@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:demo_flutter/utils/common_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/widgets/carousel_movie_card.dart';
@@ -62,6 +63,10 @@ class _HomeTabState extends State<HomeTab> {
       }
     });
     (isFav ? l10n.addedToFavourites : l10n.removedFromFavourites).showToast();
+  }
+
+  void _navigateToDetail(MovieModel movie) {
+    context.push('/movie-detail', extra: movie);
   }
 
   @override
@@ -162,9 +167,7 @@ class _HomeTabState extends State<HomeTab> {
                               movie: movie,
                               isFavorite: _favoriteIds.contains(movie.id),
                               onFavoritePressed: () => _toggleFavorite(movie),
-                              onTap: () {
-                                l10n.movieDetailsComingSoon.showToast();
-                              },
+                              onTap: () => _navigateToDetail(movie),
                             );
                           },
                           childCount: gridMovies.length,
@@ -200,8 +203,6 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   Widget _buildCarousel(List<MovieModel> movies) {
-    final l10n = AppLocalizations.of(context);
-
     return CarouselSlider.builder(
       itemCount: movies.length,
       options: CarouselOptions(
@@ -219,9 +220,7 @@ class _HomeTabState extends State<HomeTab> {
           movie: movie,
           isFavorite: _favoriteIds.contains(movie.id),
           onFavoritePressed: () => _toggleFavorite(movie),
-          onTap: () {
-            l10n.movieDetailsComingSoon.showToast();
-          },
+          onTap: () => _navigateToDetail(movie),
         );
       },
     );

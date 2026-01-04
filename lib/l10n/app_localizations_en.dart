@@ -146,4 +146,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get genderOther => 'Other';
+
+  @override
+  String get ratings => 'Ratings';
+
+  @override
+  String get popularity => 'Popularity';
+
+  @override
+  String get releaseDate => 'Release';
+
+  @override
+  String get genres => 'Genres';
+
+  @override
+  String get storyline => 'Story line';
+
+  @override
+  String get actors => 'Actors';
+
+  @override
+  String get more => 'more';
+
+  @override
+  String get less => 'less';
+
+  @override
+  String get favouriteMovies => 'Favorite movies';
 }

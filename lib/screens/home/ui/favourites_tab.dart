@@ -1,5 +1,6 @@
 import 'package:demo_flutter/utils/common_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/widgets/movie_card.dart';
@@ -88,9 +89,7 @@ class _FavouritesTabState extends State<FavouritesTab> {
                               movie: movie,
                               isFavorite: true,
                               onFavoritePressed: () => _removeFavorite(movie),
-                              onTap: () {
-                                l10n.movieDetailsComingSoon.showToast();
-                              },
+                              onTap: () => context.push('/movie-detail', extra: movie),
                             );
                           },
                         ),

@@ -229,6 +229,46 @@
   "genderOther": "Other",
   "@genderOther": {
     "description": "Other gender option"
+  },
+
+  "ratings": "Ratings",
+  "@ratings": {
+    "description": "Ratings label on detail screen"
+  },
+
+  "popularity": "Popularity",
+  "@popularity": {
+    "description": "Popularity label on detail screen"
+  },
+
+  "releaseDate": "Release",
+  "@releaseDate": {
+    "description": "Release date label on detail screen"
+  },
+
+  "genres": "Genres",
+  "@genres": {
+    "description": "Genres section header on detail screen"
+  },
+
+  "storyline": "Story line",
+  "@storyline": {
+    "description": "Storyline section header on detail screen"
+  },
+
+  "actors": "Actors",
+  "@actors": {
+    "description": "Actors section header on detail screen"
+  },
+
+  "more": "more",
+  "@more": {
+    "description": "Show more text button"
+  },
+
+  "less": "less",
+  "@less": {
+    "description": "Show less text button"
   }
 }
 
