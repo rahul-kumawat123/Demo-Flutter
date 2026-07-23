@@ -13,3 +13,4 @@ class AuthState with _$AuthState {
   const factory AuthState.error(String message) = AuthError;
   const factory AuthState.signupSuccess() = AuthSignupSuccess;
 }
+

@@ -14,3 +14,4 @@ class GenreModel with _$GenreModel {
       _$GenreModelFromJson(json);
 }
 
+

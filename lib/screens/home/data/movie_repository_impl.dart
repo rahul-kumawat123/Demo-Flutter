@@ -22,4 +22,3 @@ class MovieRepositoryImpl implements MovieRepository {
     );
   }
 }
-

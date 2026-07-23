@@ -21,44 +21,50 @@ mixin _$FavoritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieModel> favorites) loaded,
+    required TResult Function(List<MovieModel> movies) loaded,
     required TResult Function() empty,
+    required TResult Function(String message) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieModel> favorites)? loaded,
+    TResult? Function(List<MovieModel> movies)? loaded,
     TResult? Function()? empty,
+    TResult? Function(String message)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieModel> favorites)? loaded,
+    TResult Function(List<MovieModel> movies)? loaded,
     TResult Function()? empty,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(FavoritesInitial value) initial,
+    required TResult Function(FavoritesLoading value) loading,
+    required TResult Function(FavoritesLoaded value) loaded,
+    required TResult Function(FavoritesEmpty value) empty,
+    required TResult Function(FavoritesError value) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Empty value)? empty,
+    TResult? Function(FavoritesInitial value)? initial,
+    TResult? Function(FavoritesLoading value)? loading,
+    TResult? Function(FavoritesLoaded value)? loaded,
+    TResult? Function(FavoritesEmpty value)? empty,
+    TResult? Function(FavoritesError value)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Empty value)? empty,
+    TResult Function(FavoritesInitial value)? initial,
+    TResult Function(FavoritesLoading value)? loading,
+    TResult Function(FavoritesLoaded value)? loaded,
+    TResult Function(FavoritesEmpty value)? empty,
+    TResult Function(FavoritesError value)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -86,20 +92,20 @@ class _$FavoritesStateCopyWithImpl<$Res, $Val extends FavoritesState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$FavoritesInitialImplCopyWith<$Res> {
+  factory _$$FavoritesInitialImplCopyWith(
+    _$FavoritesInitialImpl value,
+    $Res Function(_$FavoritesInitialImpl) then,
+  ) = __$$FavoritesInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$FavoritesStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
+class __$$FavoritesInitialImplCopyWithImpl<$Res>
+    extends _$FavoritesStateCopyWithImpl<$Res, _$FavoritesInitialImpl>
+    implements _$$FavoritesInitialImplCopyWith<$Res> {
+  __$$FavoritesInitialImplCopyWithImpl(
+    _$FavoritesInitialImpl _value,
+    $Res Function(_$FavoritesInitialImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of FavoritesState
@@ -108,8 +114,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$FavoritesInitialImpl implements FavoritesInitial {
+  const _$FavoritesInitialImpl();
 
   @override
   String toString() {
@@ -119,7 +125,7 @@ class _$InitialImpl implements _Initial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$FavoritesInitialImpl);
   }
 
   @override
@@ -130,8 +136,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieModel> favorites) loaded,
+    required TResult Function(List<MovieModel> movies) loaded,
     required TResult Function() empty,
+    required TResult Function(String message) error,
   }) {
     return initial();
   }
@@ -141,8 +148,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieModel> favorites)? loaded,
+    TResult? Function(List<MovieModel> movies)? loaded,
     TResult? Function()? empty,
+    TResult? Function(String message)? error,
   }) {
     return initial?.call();
   }
@@ -152,8 +160,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieModel> favorites)? loaded,
+    TResult Function(List<MovieModel> movies)? loaded,
     TResult Function()? empty,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,10 +174,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(FavoritesInitial value) initial,
+    required TResult Function(FavoritesLoading value) loading,
+    required TResult Function(FavoritesLoaded value) loaded,
+    required TResult Function(FavoritesEmpty value) empty,
+    required TResult Function(FavoritesError value) error,
   }) {
     return initial(this);
   }
@@ -176,10 +186,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Empty value)? empty,
+    TResult? Function(FavoritesInitial value)? initial,
+    TResult? Function(FavoritesLoading value)? loading,
+    TResult? Function(FavoritesLoaded value)? loaded,
+    TResult? Function(FavoritesEmpty value)? empty,
+    TResult? Function(FavoritesError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -187,10 +198,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Empty value)? empty,
+    TResult Function(FavoritesInitial value)? initial,
+    TResult Function(FavoritesLoading value)? loading,
+    TResult Function(FavoritesLoaded value)? loaded,
+    TResult Function(FavoritesEmpty value)? empty,
+    TResult Function(FavoritesError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -200,25 +212,25 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements FavoritesState {
-  const factory _Initial() = _$InitialImpl;
+abstract class FavoritesInitial implements FavoritesState {
+  const factory FavoritesInitial() = _$FavoritesInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$FavoritesLoadingImplCopyWith<$Res> {
+  factory _$$FavoritesLoadingImplCopyWith(
+    _$FavoritesLoadingImpl value,
+    $Res Function(_$FavoritesLoadingImpl) then,
+  ) = __$$FavoritesLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$FavoritesStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
+class __$$FavoritesLoadingImplCopyWithImpl<$Res>
+    extends _$FavoritesStateCopyWithImpl<$Res, _$FavoritesLoadingImpl>
+    implements _$$FavoritesLoadingImplCopyWith<$Res> {
+  __$$FavoritesLoadingImplCopyWithImpl(
+    _$FavoritesLoadingImpl _value,
+    $Res Function(_$FavoritesLoadingImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of FavoritesState
@@ -227,8 +239,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$FavoritesLoadingImpl implements FavoritesLoading {
+  const _$FavoritesLoadingImpl();
 
   @override
   String toString() {
@@ -238,7 +250,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$FavoritesLoadingImpl);
   }
 
   @override
@@ -249,8 +261,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieModel> favorites) loaded,
+    required TResult Function(List<MovieModel> movies) loaded,
     required TResult Function() empty,
+    required TResult Function(String message) error,
   }) {
     return loading();
   }
@@ -260,8 +273,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieModel> favorites)? loaded,
+    TResult? Function(List<MovieModel> movies)? loaded,
     TResult? Function()? empty,
+    TResult? Function(String message)? error,
   }) {
     return loading?.call();
   }
@@ -271,8 +285,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieModel> favorites)? loaded,
+    TResult Function(List<MovieModel> movies)? loaded,
     TResult Function()? empty,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -284,10 +299,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(FavoritesInitial value) initial,
+    required TResult Function(FavoritesLoading value) loading,
+    required TResult Function(FavoritesLoaded value) loaded,
+    required TResult Function(FavoritesEmpty value) empty,
+    required TResult Function(FavoritesError value) error,
   }) {
     return loading(this);
   }
@@ -295,10 +311,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Empty value)? empty,
+    TResult? Function(FavoritesInitial value)? initial,
+    TResult? Function(FavoritesLoading value)? loading,
+    TResult? Function(FavoritesLoaded value)? loaded,
+    TResult? Function(FavoritesEmpty value)? empty,
+    TResult? Function(FavoritesError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -306,10 +323,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Empty value)? empty,
+    TResult Function(FavoritesInitial value)? initial,
+    TResult Function(FavoritesLoading value)? loading,
+    TResult Function(FavoritesLoaded value)? loaded,
+    TResult Function(FavoritesEmpty value)? empty,
+    TResult Function(FavoritesError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -319,39 +337,39 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements FavoritesState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class FavoritesLoading implements FavoritesState {
+  const factory FavoritesLoading() = _$FavoritesLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
+abstract class _$$FavoritesLoadedImplCopyWith<$Res> {
+  factory _$$FavoritesLoadedImplCopyWith(
+    _$FavoritesLoadedImpl value,
+    $Res Function(_$FavoritesLoadedImpl) then,
+  ) = __$$FavoritesLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MovieModel> favorites});
+  $Res call({List<MovieModel> movies});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$FavoritesStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
+class __$$FavoritesLoadedImplCopyWithImpl<$Res>
+    extends _$FavoritesStateCopyWithImpl<$Res, _$FavoritesLoadedImpl>
+    implements _$$FavoritesLoadedImplCopyWith<$Res> {
+  __$$FavoritesLoadedImplCopyWithImpl(
+    _$FavoritesLoadedImpl _value,
+    $Res Function(_$FavoritesLoadedImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of FavoritesState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? favorites = null}) {
+  $Res call({Object? movies = null}) {
     return _then(
-      _$LoadedImpl(
-        favorites: null == favorites
-            ? _value._favorites
-            : favorites // ignore: cast_nullable_to_non_nullable
+      _$FavoritesLoadedImpl(
+        movies: null == movies
+            ? _value._movies
+            : movies // ignore: cast_nullable_to_non_nullable
                   as List<MovieModel>,
       ),
     );
@@ -360,55 +378,56 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required final List<MovieModel> favorites})
-    : _favorites = favorites;
+class _$FavoritesLoadedImpl implements FavoritesLoaded {
+  const _$FavoritesLoadedImpl({required final List<MovieModel> movies})
+    : _movies = movies;
 
-  final List<MovieModel> _favorites;
+  final List<MovieModel> _movies;
   @override
-  List<MovieModel> get favorites {
-    if (_favorites is EqualUnmodifiableListView) return _favorites;
+  List<MovieModel> get movies {
+    if (_movies is EqualUnmodifiableListView) return _movies;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_favorites);
+    return EqualUnmodifiableListView(_movies);
   }
 
   @override
   String toString() {
-    return 'FavoritesState.loaded(favorites: $favorites)';
+    return 'FavoritesState.loaded(movies: $movies)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(
-              other._favorites,
-              _favorites,
-            ));
+            other is _$FavoritesLoadedImpl &&
+            const DeepCollectionEquality().equals(other._movies, _movies));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_favorites));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_movies));
 
   /// Create a copy of FavoritesState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$FavoritesLoadedImplCopyWith<_$FavoritesLoadedImpl> get copyWith =>
+      __$$FavoritesLoadedImplCopyWithImpl<_$FavoritesLoadedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieModel> favorites) loaded,
+    required TResult Function(List<MovieModel> movies) loaded,
     required TResult Function() empty,
+    required TResult Function(String message) error,
   }) {
-    return loaded(favorites);
+    return loaded(movies);
   }
 
   @override
@@ -416,10 +435,11 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieModel> favorites)? loaded,
+    TResult? Function(List<MovieModel> movies)? loaded,
     TResult? Function()? empty,
+    TResult? Function(String message)? error,
   }) {
-    return loaded?.call(favorites);
+    return loaded?.call(movies);
   }
 
   @override
@@ -427,12 +447,13 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieModel> favorites)? loaded,
+    TResult Function(List<MovieModel> movies)? loaded,
     TResult Function()? empty,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(favorites);
+      return loaded(movies);
     }
     return orElse();
   }
@@ -440,10 +461,11 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(FavoritesInitial value) initial,
+    required TResult Function(FavoritesLoading value) loading,
+    required TResult Function(FavoritesLoaded value) loaded,
+    required TResult Function(FavoritesEmpty value) empty,
+    required TResult Function(FavoritesError value) error,
   }) {
     return loaded(this);
   }
@@ -451,10 +473,11 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Empty value)? empty,
+    TResult? Function(FavoritesInitial value)? initial,
+    TResult? Function(FavoritesLoading value)? loading,
+    TResult? Function(FavoritesLoaded value)? loaded,
+    TResult? Function(FavoritesEmpty value)? empty,
+    TResult? Function(FavoritesError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -462,10 +485,11 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Empty value)? empty,
+    TResult Function(FavoritesInitial value)? initial,
+    TResult Function(FavoritesLoading value)? loading,
+    TResult Function(FavoritesLoaded value)? loaded,
+    TResult Function(FavoritesEmpty value)? empty,
+    TResult Function(FavoritesError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -475,34 +499,34 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements FavoritesState {
-  const factory _Loaded({required final List<MovieModel> favorites}) =
-      _$LoadedImpl;
+abstract class FavoritesLoaded implements FavoritesState {
+  const factory FavoritesLoaded({required final List<MovieModel> movies}) =
+      _$FavoritesLoadedImpl;
 
-  List<MovieModel> get favorites;
+  List<MovieModel> get movies;
 
   /// Create a copy of FavoritesState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+  _$$FavoritesLoadedImplCopyWith<_$FavoritesLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EmptyImplCopyWith<$Res> {
-  factory _$$EmptyImplCopyWith(
-    _$EmptyImpl value,
-    $Res Function(_$EmptyImpl) then,
-  ) = __$$EmptyImplCopyWithImpl<$Res>;
+abstract class _$$FavoritesEmptyImplCopyWith<$Res> {
+  factory _$$FavoritesEmptyImplCopyWith(
+    _$FavoritesEmptyImpl value,
+    $Res Function(_$FavoritesEmptyImpl) then,
+  ) = __$$FavoritesEmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EmptyImplCopyWithImpl<$Res>
-    extends _$FavoritesStateCopyWithImpl<$Res, _$EmptyImpl>
-    implements _$$EmptyImplCopyWith<$Res> {
-  __$$EmptyImplCopyWithImpl(
-    _$EmptyImpl _value,
-    $Res Function(_$EmptyImpl) _then,
+class __$$FavoritesEmptyImplCopyWithImpl<$Res>
+    extends _$FavoritesStateCopyWithImpl<$Res, _$FavoritesEmptyImpl>
+    implements _$$FavoritesEmptyImplCopyWith<$Res> {
+  __$$FavoritesEmptyImplCopyWithImpl(
+    _$FavoritesEmptyImpl _value,
+    $Res Function(_$FavoritesEmptyImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of FavoritesState
@@ -511,8 +535,8 @@ class __$$EmptyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmptyImpl implements _Empty {
-  const _$EmptyImpl();
+class _$FavoritesEmptyImpl implements FavoritesEmpty {
+  const _$FavoritesEmptyImpl();
 
   @override
   String toString() {
@@ -522,7 +546,7 @@ class _$EmptyImpl implements _Empty {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmptyImpl);
+        (other.runtimeType == runtimeType && other is _$FavoritesEmptyImpl);
   }
 
   @override
@@ -533,8 +557,9 @@ class _$EmptyImpl implements _Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieModel> favorites) loaded,
+    required TResult Function(List<MovieModel> movies) loaded,
     required TResult Function() empty,
+    required TResult Function(String message) error,
   }) {
     return empty();
   }
@@ -544,8 +569,9 @@ class _$EmptyImpl implements _Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieModel> favorites)? loaded,
+    TResult? Function(List<MovieModel> movies)? loaded,
     TResult? Function()? empty,
+    TResult? Function(String message)? error,
   }) {
     return empty?.call();
   }
@@ -555,8 +581,9 @@ class _$EmptyImpl implements _Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieModel> favorites)? loaded,
+    TResult Function(List<MovieModel> movies)? loaded,
     TResult Function()? empty,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -568,10 +595,11 @@ class _$EmptyImpl implements _Empty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Empty value) empty,
+    required TResult Function(FavoritesInitial value) initial,
+    required TResult Function(FavoritesLoading value) loading,
+    required TResult Function(FavoritesLoaded value) loaded,
+    required TResult Function(FavoritesEmpty value) empty,
+    required TResult Function(FavoritesError value) error,
   }) {
     return empty(this);
   }
@@ -579,10 +607,11 @@ class _$EmptyImpl implements _Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Empty value)? empty,
+    TResult? Function(FavoritesInitial value)? initial,
+    TResult? Function(FavoritesLoading value)? loading,
+    TResult? Function(FavoritesLoaded value)? loaded,
+    TResult? Function(FavoritesEmpty value)? empty,
+    TResult? Function(FavoritesError value)? error,
   }) {
     return empty?.call(this);
   }
@@ -590,10 +619,11 @@ class _$EmptyImpl implements _Empty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Empty value)? empty,
+    TResult Function(FavoritesInitial value)? initial,
+    TResult Function(FavoritesLoading value)? loading,
+    TResult Function(FavoritesLoaded value)? loaded,
+    TResult Function(FavoritesEmpty value)? empty,
+    TResult Function(FavoritesError value)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -603,6 +633,169 @@ class _$EmptyImpl implements _Empty {
   }
 }
 
-abstract class _Empty implements FavoritesState {
-  const factory _Empty() = _$EmptyImpl;
+abstract class FavoritesEmpty implements FavoritesState {
+  const factory FavoritesEmpty() = _$FavoritesEmptyImpl;
+}
+
+/// @nodoc
+abstract class _$$FavoritesErrorImplCopyWith<$Res> {
+  factory _$$FavoritesErrorImplCopyWith(
+    _$FavoritesErrorImpl value,
+    $Res Function(_$FavoritesErrorImpl) then,
+  ) = __$$FavoritesErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$FavoritesErrorImplCopyWithImpl<$Res>
+    extends _$FavoritesStateCopyWithImpl<$Res, _$FavoritesErrorImpl>
+    implements _$$FavoritesErrorImplCopyWith<$Res> {
+  __$$FavoritesErrorImplCopyWithImpl(
+    _$FavoritesErrorImpl _value,
+    $Res Function(_$FavoritesErrorImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of FavoritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$FavoritesErrorImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$FavoritesErrorImpl implements FavoritesError {
+  const _$FavoritesErrorImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'FavoritesState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FavoritesErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of FavoritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FavoritesErrorImplCopyWith<_$FavoritesErrorImpl> get copyWith =>
+      __$$FavoritesErrorImplCopyWithImpl<_$FavoritesErrorImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<MovieModel> movies) loaded,
+    required TResult Function() empty,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<MovieModel> movies)? loaded,
+    TResult? Function()? empty,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<MovieModel> movies)? loaded,
+    TResult Function()? empty,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FavoritesInitial value) initial,
+    required TResult Function(FavoritesLoading value) loading,
+    required TResult Function(FavoritesLoaded value) loaded,
+    required TResult Function(FavoritesEmpty value) empty,
+    required TResult Function(FavoritesError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FavoritesInitial value)? initial,
+    TResult? Function(FavoritesLoading value)? loading,
+    TResult? Function(FavoritesLoaded value)? loaded,
+    TResult? Function(FavoritesEmpty value)? empty,
+    TResult? Function(FavoritesError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FavoritesInitial value)? initial,
+    TResult Function(FavoritesLoading value)? loading,
+    TResult Function(FavoritesLoaded value)? loaded,
+    TResult Function(FavoritesEmpty value)? empty,
+    TResult Function(FavoritesError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FavoritesError implements FavoritesState {
+  const factory FavoritesError(final String message) = _$FavoritesErrorImpl;
+
+  String get message;
+
+  /// Create a copy of FavoritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FavoritesErrorImplCopyWith<_$FavoritesErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

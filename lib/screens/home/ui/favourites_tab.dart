@@ -1,106 +1,93 @@
-import 'package:demo_flutter/utils/common_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_spacing.dart';
-import '../../../core/widgets/movie_card.dart';
-import '../../../data/local/favorites_local_storage.dart';
 import '../../../l10n/app_localizations.dart';
-import '../../../models/movie/movie_model.dart';
+import '../cubit/favorites_cubit.dart';
+import '../cubit/favorites_state.dart';
+import '../../../core/widgets/favorite_movie_tile.dart';
 
-/// Favourites Tab - Shows user's favorite movies
-class FavouritesTab extends StatefulWidget {
+class FavouritesTab extends StatelessWidget {
   const FavouritesTab({super.key});
-
-  @override
-  State<FavouritesTab> createState() => _FavouritesTabState();
-}
-
-class _FavouritesTabState extends State<FavouritesTab> {
-  List<MovieModel> _favorites = [];
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadFavorites();
-  }
-
-  Future<void> _loadFavorites() async {
-    setState(() => _isLoading = true);
-    final favorites = await FavoritesLocalStorage.getFavoriteMovies();
-    setState(() {
-      _favorites = favorites;
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _removeFavorite(MovieModel movie) async {
-    final l10n = AppLocalizations.of(context);
-    await FavoritesLocalStorage.removeFavorite(movie.id);
-    await _loadFavorites();
-    l10n.removedFromFavourites.showToast();
-  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(AppSpacing.spacing16),
-            child: Text(
-              l10n.favourites,
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+    return BlocProvider(
+      create: (_) => FavoritesCubit()..loadFavorites(),
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(AppSpacing.spacing16),
+              child: Text(
+                l10n.favourites,
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: _isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(color: Color(0xFFE94560)),
-                  )
-                : _favorites.isEmpty
-                    ? _buildEmptyState()
-                    : RefreshIndicator(
-                        onRefresh: _loadFavorites,
-                        color: const Color(0xFFE94560),
-                        child: GridView.builder(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpacing.spacing16,
-                          ),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.65,
-                            crossAxisSpacing: AppSpacing.spacing12,
-                            mainAxisSpacing: AppSpacing.spacing12,
-                          ),
-                          itemCount: _favorites.length,
-                          itemBuilder: (context, index) {
-                            final movie = _favorites[index];
-                            return MovieCard(
-                              movie: movie,
-                              isFavorite: true,
-                              onFavoritePressed: () => _removeFavorite(movie),
-                              onTap: () => context.push('/movie-detail', extra: movie),
-                            );
-                          },
-                        ),
+
+            Expanded(
+              child: BlocBuilder<FavoritesCubit, FavoritesState>(
+                builder: (context, state) {
+                  return state.when(
+                    initial: () => const SizedBox.shrink(),
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(
+                        color: Color(0xFFE94560),
                       ),
-          ),
-        ],
+                    ),
+                    empty: () => _EmptyFavorites(),
+                    error: (message) => Center(
+                      child: Text(
+                        message,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    loaded: (movies) => RefreshIndicator(
+                      color: const Color(0xFFE94560),
+                      onRefresh:
+                      context.read<FavoritesCubit>().refresh,
+                      child: ListView.builder(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.spacing16,
+                        ),
+                        itemCount: movies.length,
+                        itemBuilder: (context, index) {
+                          final movie = movies[index];
+                          return FavoriteMovieTile(
+                            movie: movie,
+                            onRemove: () => context
+                                .read<FavoritesCubit>()
+                                .removeFavorite(movie),
+                            onTap: () => context.push(
+                              '/movie-detail',
+                              extra: movie,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
 
-  Widget _buildEmptyState() {
+class _EmptyFavorites extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
     return Center(
@@ -135,4 +122,3 @@ class _FavouritesTabState extends State<FavouritesTab> {
     );
   }
 }
-

@@ -5,6 +5,7 @@ import '../screens/login/ui/login_screen.dart';
 import '../screens/login/ui/signup_screen.dart';
 import '../screens/home/ui/home_screen.dart';
 import '../screens/detail/ui/movie_detail_screen.dart';
+import '../screens/hmac_demo/ui/hmac_demo_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -37,6 +38,11 @@ class AppRouter {
           final movie = state.extra as MovieModel;
           return MovieDetailScreen(movie: movie);
         },
+      ),
+      GoRoute(
+        path: '/hmac-demo',
+        name: 'hmacDemo',
+        builder: (context, state) => const HmacDemoScreen(),
       ),
     ],
   );

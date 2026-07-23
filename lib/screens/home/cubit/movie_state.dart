@@ -18,3 +18,4 @@ class MovieState with _$MovieState {
   const factory MovieState.error(String message) = MovieError;
 }
 
+

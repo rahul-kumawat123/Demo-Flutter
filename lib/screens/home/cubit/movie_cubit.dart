@@ -106,3 +106,4 @@ class MovieCubit extends Cubit<MovieState> {
 
   bool get hasMorePages => _currentPage < _totalPages;
 }
+

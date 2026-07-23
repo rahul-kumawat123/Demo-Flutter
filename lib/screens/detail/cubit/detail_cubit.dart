@@ -68,3 +68,4 @@ class DetailCubit extends Cubit<DetailState> {
   }
 }
 
+

@@ -417,12 +417,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'less'**
   String get less;
-
-  /// Favorite movies screen title
-  ///
-  /// In en, this message translates to:
-  /// **'Favorite movies'**
-  String get favouriteMovies;
 }
 
 class _AppLocalizationsDelegate

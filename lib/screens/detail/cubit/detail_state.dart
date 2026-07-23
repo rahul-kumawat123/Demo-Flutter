@@ -18,3 +18,4 @@ class DetailState with _$DetailState {
   const factory DetailState.error(String message) = _Error;
 }
 
+

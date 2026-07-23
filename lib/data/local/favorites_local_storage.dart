@@ -90,3 +90,4 @@ class FavoritesLocalStorage {
     await prefs.remove(_favoritesKey);
   }
 }
+

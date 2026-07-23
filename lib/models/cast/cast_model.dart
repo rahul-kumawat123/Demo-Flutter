@@ -22,3 +22,4 @@ class CastModel with _$CastModel {
   String get displayName => name ?? originalName ?? 'Unknown';
 }
 
+

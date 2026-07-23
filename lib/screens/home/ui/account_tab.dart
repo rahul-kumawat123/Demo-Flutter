@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../bloc/auth/auth_cubit.dart';
 import '../../../core/constants/app_spacing.dart';
@@ -126,6 +127,67 @@ class AccountTab extends StatelessWidget {
                       ],
                     ),
                   ),
+                  gapH16,
+                  // HMAC Security POC entry
+                  GestureDetector(
+                    onTap: () => context.push('/hmac-demo'),
+                    child: Container(
+                      padding: const EdgeInsets.all(AppSpacing.spacing20),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.1),
+                        borderRadius:
+                            BorderRadius.circular(AppSpacing.spacing16),
+                        border: Border.all(
+                          color: const Color(0xFFE94560).withOpacity(0.3),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: AppSpacing.spacing60,
+                            height: AppSpacing.spacing60,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: const Color(0xFFE94560).withOpacity(0.2),
+                            ),
+                            child: const Icon(
+                              Icons.security,
+                              size: AppSpacing.spacing30,
+                              color: Color(0xFFE94560),
+                            ),
+                          ),
+                          gapW16,
+                          const Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'HMAC API Security',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                gapH4,
+                                Text(
+                                  'Learn request signing with HMAC-SHA256',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            color: Colors.white.withOpacity(0.6),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   const Spacer(),
                   // Logout button
                   SizedBox(
@@ -160,4 +222,5 @@ class AccountTab extends StatelessWidget {
     );
   }
 }
+
 

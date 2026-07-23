@@ -69,3 +69,4 @@ class InfoBadge extends StatelessWidget {
   }
 }
 
+

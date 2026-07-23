@@ -146,3 +146,4 @@ class AuthLocalStorage {
     return users.any((u) => u['email'] == email);
   }
 }
+

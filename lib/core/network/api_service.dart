@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import 'api_constants.dart';
 import 'api_exceptions.dart';
@@ -24,14 +25,17 @@ class ApiService {
       ),
     );
 
-    // Add logging interceptor for debugging
-    _dio.interceptors.add(
-      LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-        logPrint: (object) => print('DIO: $object'),
-      ),
-    );
+    // Add logging interceptor for debugging. Request/response logging can leak
+    // auth tokens and headers, so restrict it to debug builds only.
+    if (kDebugMode) {
+      _dio.interceptors.add(
+        LogInterceptor(
+          requestBody: true,
+          responseBody: true,
+          logPrint: (object) => debugPrint('DIO: $object'),
+        ),
+      );
+    }
   }
 
   /// GET request with Either response
@@ -96,4 +100,5 @@ class ApiService {
     }
   }
 }
+
 

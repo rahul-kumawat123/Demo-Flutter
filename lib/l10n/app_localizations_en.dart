@@ -170,7 +170,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get less => 'less';
-
-  @override
-  String get favouriteMovies => 'Favorite movies';
 }

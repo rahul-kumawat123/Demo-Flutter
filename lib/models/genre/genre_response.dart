@@ -15,3 +15,4 @@ class GenreResponse with _$GenreResponse {
       _$GenreResponseFromJson(json);
 }
 
+
